@@ -1,0 +1,12 @@
+PRECO	BEBIDA
+3,70	Agua mineral
+3,00	Agua mineral sem gás
+5,00	Agua de coco
+7,60	Coca Cola
+6,50	Fanta Laranja
+6,50	Fanta Uva
+5,50	Guaraná
+4,50	Limonada
+5,30	Pepsi
+4,70	Sprite
+14,5	Caipirinha
