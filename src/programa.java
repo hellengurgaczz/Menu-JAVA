@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,7 +7,7 @@ import java.util.Scanner;
 
 public class programa {
 	
-	public static void main (String[] Args) throws FileNotFoundException {
+	public static void main (String[] Args) throws IOException {
 		
 		int retorno =  1;
 		Scanner leitor = new Scanner(System.in);
@@ -33,28 +34,28 @@ public class programa {
 		
 	}
 
-	private static void configuracoes() {
+	private static void configuracoes() throws IOException {
 		
 		Scanner leitor = new Scanner(System.in);
 		int retorno = 1;
 		do {
 			System.out.println("\n\t----CONFIGURAÇÕES DO CARDÁPIO----\n");
-			System.out.println("1 - Para adicionar item a pratos\n2 -  Para adicionar item a bebidas\n 3 - Para adicionar"
-					+ " item aos vinhos\n4 - Para atualizar item de pratos; \n5 - Para atualizar item de bebidas"
+			System.out.println("1 - Para adicionar item a pratos\n2 - Para adicionar item a bebidas\n3 - Para adicionar"
+					+ " item aos vinhos\n4 - Para atualizar item de pratos\n5 - Para atualizar item de bebidas"
 					+ "\n6 - Para atualizar item de vinhos\n7 - Para remover item de pratos\n8 - Para remover item de "
 					+ "bebidas\n9 - Para remover item de vinhos\n0 - Sair");
 			retorno = leitor.nextInt();
 			
 			switch (retorno) {
-			case 1 -> Cardapio.adicionar("PRATOS");
-			case 2 -> Cardapio.adicionar("BEBIDAS");
-			case 3 -> Cardapio.adicionar("VINHOS");
-			case 4 -> Cardapio.identificarLista("PRATOS").atualizar();
-			case 5 -> Cardapio.identificarLista("PRATOS").atualizar();
-			case 6 -> Cardapio.atualizar("vinhos");
-			case 7 -> Cardapio.remover("pratos");
-			case 8 -> Cardapio.remover("bebidas");
-			case 9 -> Cardapio.remover("vinhos");
+			case 1 -> Cardapio.adicionarItemArquivo(Cardapio.caminhoPratos);
+			case 2 -> Cardapio.adicionarItemArquivo(Cardapio.caminhoBebidas);
+			case 3 -> Cardapio.adicionarItemArquivo(Cardapio.caminhoVinhos);
+			case 4 -> Cardapio.atualizar(Cardapio.caminhoPratos);
+			case 5 -> Cardapio.atualizar(Cardapio.caminhoBebidas);
+			case 6 -> Cardapio.atualizar(Cardapio.caminhoVinhos);
+			case 7 -> Cardapio.removerItemArquivo(Cardapio.caminhoPratos);
+			case 8 -> Cardapio.removerItemArquivo(Cardapio.caminhoBebidas);
+			case 9 -> Cardapio.removerItemArquivo(Cardapio.caminhoVinhos);
 			}
 			
 		}while (retorno != 0);
@@ -63,23 +64,16 @@ public class programa {
 	private static void listagem() throws FileNotFoundException {
 		
 		Scanner leitor = new Scanner(System.in);
+		
 		System.out.println("\n\t----LISTAGEM----\n");
 		System.out.println("1 - Para pratos");
 		System.out.println("2 - Para bebidas");
 		System.out.println("3 - Para vinhos");
-		int retorno = leitor.nextInt();
-		List<Item>lista = new ArrayList<>();
-		String titulo = null;
 		
-		switch (retorno) {
-		case 1 -> lista = Cardapio.listar(titulo = "PRATOS");
-		case 2 -> lista = Cardapio.listar(titulo = "BEBIDAS");
-		case 3 -> lista = Cardapio.listar(titulo = "VINHOS");
-		}
-		
-		System.out.println("\nPREÇO\t" + titulo);
-		for (Item item : lista) {
-			System.out.println(item.getPreco() + "\t" + item.getNome());
+		switch (leitor.nextInt()) {
+		case 1 -> Cardapio.listar(Cardapio.caminhoPratos);
+		case 2 -> Cardapio.listar(Cardapio.caminhoBebidas);
+		case 3 -> Cardapio.listar(Cardapio.caminhoVinhos);		
 		}
 		
 		

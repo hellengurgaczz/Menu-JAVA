@@ -11,4 +11,4 @@ PRECO	VINHO
 39.90	Semillón
 46.90	Sauvignon Blanc
 39.00	Barbera Italiana
-35.25	Moscato
+35.25	Moscato4	Caqui
