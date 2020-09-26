@@ -1,9 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
 
 public class programa {
 	
@@ -31,7 +28,7 @@ public class programa {
 			
 		} while(retorno != 0);
 
-		
+		leitor.close();
 	}
 
 	private static void configuracoes() throws IOException {
@@ -73,48 +70,7 @@ public class programa {
 		switch (leitor.nextInt()) {
 		case 1 -> Cardapio.listar(Cardapio.caminhoPratos);
 		case 2 -> Cardapio.listar(Cardapio.caminhoBebidas);
-		case 3 -> Cardapio.listar(Cardapio.caminhoVinhos);		
+		case 3 -> Cardapio.listar(Cardapio.caminhoVinhos);
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 }

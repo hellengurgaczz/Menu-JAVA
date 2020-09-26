@@ -1,6 +1,4 @@
 import java.io.File;
-
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,9 +7,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-
-
 
 
 public class Cardapio {
@@ -112,7 +107,7 @@ public class Cardapio {
 
 	
 
-	public  static void adicionarItemArquivo(String caminho) throws IOException {
+	public static void adicionarItemArquivo(String caminho) throws IOException {
 
 		try {
 			
@@ -162,7 +157,7 @@ public class Cardapio {
 	}
 	
 
-	private static void atualizarArquivo(String caminho) throws IOException {
+	public static void atualizarArquivo(String caminho) throws IOException {
 		
 		FileWriter arquivo = new FileWriter(caminho);
 		PrintWriter gravador = new PrintWriter(arquivo);
@@ -196,7 +191,6 @@ public class Cardapio {
 				return item;
 			}
 		}
-		
 		return null;
 	}
 

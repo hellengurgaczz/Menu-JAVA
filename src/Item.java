@@ -6,7 +6,6 @@ public class Item {
 	private double preco;
 	private int id;
 	
-
 	public Item(String nome, double preco) {
 		
 		
@@ -15,7 +14,6 @@ public class Item {
 		
 	}
 	
-
 	public Item(int id, String nome, String preco) {
 		
 		this.id = id;
