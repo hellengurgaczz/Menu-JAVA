@@ -23,8 +23,8 @@ public class programa {
 			retorno = leitor.nextInt();
 			
 			switch (retorno) {
-			case 1 -> Pedidos.novo();
-			case 2 -> Pedidos.pedido();
+			case 1 -> Pedidos.novoPedido();
+			case 2 -> Pedidos.pedidoExistente();
 			case 3 -> listagem();
 			case 4 -> configuracoes();
 			}
@@ -61,7 +61,7 @@ public class programa {
 		}while (retorno != 0);
 	}
 
-	private static void listagem() throws FileNotFoundException {
+	public static void listagem() throws FileNotFoundException {
 		
 		Scanner leitor = new Scanner(System.in);
 		
