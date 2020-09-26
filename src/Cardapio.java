@@ -33,8 +33,6 @@ public class Cardapio {
 		for (Item item : lista) {
 			System.out.println(item.getId() + "\t" + item.getPreco() + "\t" + item.getNome());
 		}
-		
-		
 	}
 
 	public static List<Item> carregarLista(String caminho) throws FileNotFoundException {
@@ -159,7 +157,7 @@ public class Cardapio {
 		}else {
 			System.out.println("\nAção cancelada!" );
 		}
-			
+		
 		atualizarArquivo(caminho);
 	}
 	
@@ -169,23 +167,24 @@ public class Cardapio {
 		FileWriter arquivo = new FileWriter(caminho);
 		PrintWriter gravador = new PrintWriter(arquivo);
 		
+		
 		if(caminho.contains("prato")) {
-			gravador.println("PRATO;PRECO");
+			gravador.print("PRATO;PRECO");
 			for (Item item : lista) {
-				gravador.println(item.getNome() + ";" + item.getPreco());
+				gravador.print("\n" + item.getNome() + ";" + item.getPreco());
 			}
 		}else if (caminho.contains("bebida")){
-			gravador.println("PRECO\tBEBIDA");
+			gravador.print("PRECO\tBEBIDA");
 			for (Item item : lista) {
-				gravador.println(Double.toString(item.getPreco()).replace(".", ",") + "\t" + item.getNome());
+				gravador.print("\n" + Double.toString(item.getPreco()).replace(".", ",") + "\t" + item.getNome());
 			}
 		}else if (caminho.contains("vinho")){
-			gravador.println("PRECO\tVINHO");
+			gravador.print("PRECO\tVINHO");
 			for (Item item : lista) {
-				gravador.println(item.getPreco() + "\t" + item.getNome());
+				gravador.print("\n" + item.getPreco() + "\t" + item.getNome());
 			}
 		}
-		
+	
 		gravador.close();
 		arquivo.close();
 	}

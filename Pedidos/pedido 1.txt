@@ -1,8 +1,0 @@
-PEDIDO 1
-
-Preço		Pedido				Observação
-R$7.6		Coca Cola
-R$11.3		Frango xadrez		sem molho
-
-
-TOTAL: R$18.9

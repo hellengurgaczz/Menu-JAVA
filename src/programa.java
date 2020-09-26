@@ -65,7 +65,7 @@ public class programa {
 		
 		Scanner leitor = new Scanner(System.in);
 		
-		System.out.println("\n\t----LISTAGEM----\n");
+		System.out.println("\n----LISTAGEM----\n");
 		System.out.println("1 - Para pratos");
 		System.out.println("2 - Para bebidas");
 		System.out.println("3 - Para vinhos");

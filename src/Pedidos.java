@@ -5,46 +5,79 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Pedidos {
 	
 	static int codigoPedido = 1;
+	static List<String> listaPedidos = new ArrayList<>();
 	
-	public static void novoPedido() throws IOException {
+	static {
+		System.out.println("\n----PEDIDOS----\n");
+	}
 
+	public static void novoPedido() throws IOException {
+		
 		FileWriter arquivo = new FileWriter("C:\\Users\\fernandes\\Documents\\Faculdade\\Faculdade SI - Matérias\\2° Período\\1°Bimestre\\Desenvolvimento de Software I\\Eclipse\\Atividade 5\\Pedidos\\pedido " + codigoPedido + ".txt");
 		PrintWriter gravador = new PrintWriter(arquivo);
 		
-		System.out.println("\t\n----Pedido " + codigoPedido + "----");
+		System.out.println(" -> Pedido " + codigoPedido);
 		gravador.println("PEDIDO " + codigoPedido + "\n");
 		gravador.println("Preço\t\tPedido\t\t\t\tObservação");
 		
-		pedindo(gravador);
-		
-		arquivo.close();
+		pedindo(gravador,0);
+
 		codigoPedido++;
 	}
 
 	public static void pedidoExistente() throws IOException {
 		
+		listaPedidos.clear();
 		Scanner leitor = new Scanner(System.in);
-		System.out.println("\n----PEDIDOS----");
+		
 		System.out.println("\nInforme o código do pedido do cliente: ");
+		int pedidoNumero = leitor.nextInt();
+		File arquivo = new File("C:\\Users\\fernandes\\Documents\\Faculdade\\Faculdade SI - Matérias\\2° Período\\1°Bimestre\\Desenvolvimento de Software I\\Eclipse\\Atividade 5\\Pedidos\\pedido " + pedidoNumero + ".txt");
+		leitor = new Scanner(arquivo);
+		double total = 0;
 		
-		File arquivo = new File("C:\\Users\\fernandes\\Documents\\Faculdade\\Faculdade SI - Matérias\\2° Período\\1°Bimestre\\Desenvolvimento de Software I\\Eclipse\\Atividade 5\\Pedidos\\pedido " + leitor.nextInt() + ".txt");
+		System.out.println("-> Pedido " + pedidoNumero);
+		while(leitor.hasNext()) {
+			listaPedidos.add(leitor.nextLine());
+		}
 		
+		FileWriter arquivo2 = new FileWriter(arquivo);
+		PrintWriter gravador = new PrintWriter(arquivo);
+		
+		int i = 0;
+		for(String linha : listaPedidos) {
+			
+			if(i == listaPedidos.size() - 2) {
+				
+			}else if(linha.contains("TOTAL")) {
+				String [] partes = linha.split("\t");
+				total = Double.parseDouble(partes[1]);	
+			}else {
+				gravador.println(linha);
+			}
+			i++;
+		}
+
+		pedindo(gravador,total);
+		
+		arquivo2.close();
 	}
 	
-	public static void pedindo(PrintWriter gravador) throws FileNotFoundException {
+	public static void pedindo(PrintWriter gravador, double total) throws FileNotFoundException {
 		
 		Scanner leitor = new Scanner(System.in);
 		int codigo;
-		double total = 0;
-		
+	
 		do {
-		
-			System.out.println("\n1 - Adicionar itens\n0 - Finalizar ");
+			
+			System.out.println("\n1 - Adicionar itens\n0 - Finalizar");
 			codigo = leitor.nextInt();
 			
 			if(codigo != 0) {
@@ -62,21 +95,25 @@ public class Pedidos {
 				}else {
 					gravador.println("R$" + itemAddPedido.getPreco() + "\t\t" + itemAddPedido.getNome() +
 							 "\t\t\t" + obs);
-				}
 				
 				total += itemAddPedido.getPreco();
-				System.out.println("\n" + itemAddPedido.getNome() + " adicionado com sucesso!");
 				
-			}else {
+				System.out.println(itemAddPedido.getNome() + " adicionado com sucesso!\n\n");
+				
+				}
+				
+				}else {
 				break;
 			}
 			
 		} while(codigo != 0);
 		
-		gravador.println("\n\nTOTAL: R$" + total);
+
+		gravador.println("\nTOTAL: R$\t" + total);
 		gravador.close();
 
 	}
+}
 
-	}
+	
 	
