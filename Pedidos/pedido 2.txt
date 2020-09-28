@@ -1,6 +1,0 @@
-PEDIDO 2
-
-Preço		Pedido				Observação
-R$3.7		Agua mineral
-
-TOTAL: R$	3.7

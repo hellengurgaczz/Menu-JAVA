@@ -19,15 +19,18 @@ public class Cardapio {
 	static {
 		
 		lista = new ArrayList<Item>();
+		
 	}
 	
 	public static void listar(String caminho) throws FileNotFoundException {
 		
 		lista = carregarLista(caminho);
-		System.out.println("\nID\tPREÇO\t\tITEM");
+		System.out.println("\n------------------------------------------------------");
+		System.out.println("ID\tPREÇO\t\tITEM");
 		for (Item item : lista) {
 			System.out.println(item.getId() + "\t" + item.getPreco() + "\t" + item.getNome());
 		}
+		System.out.println("------------------------------------------------------");
 	}
 
 	public static List<Item> carregarLista(String caminho) throws FileNotFoundException {
@@ -103,9 +106,6 @@ public class Cardapio {
 		atualizarArquivo(caminho);
 		System.out.println("\n" + itemAtualizar.getNome() + " atualizado com sucesso!" );
 	}
-		
-
-	
 
 	public static void adicionarItemArquivo(String caminho) throws IOException {
 

@@ -53,12 +53,13 @@ public class Pedidos {
 		
 		int i = 0;
 		for(String linha : listaPedidos) {
-			
-			if(i == listaPedidos.size() - 2) {
 				
-			}else if(linha.contains("TOTAL")) {
+			if(linha.contains("TOTAL")) {
 				String [] partes = linha.split("\t");
 				total = Double.parseDouble(partes[1]);	
+				System.out.println(total +"linha: " +  linha);
+			}else if(i == (listaPedidos.size() - 2)) {
+				
 			}else {
 				gravador.println(linha);
 			}
@@ -95,14 +96,14 @@ public class Pedidos {
 				}else {
 					gravador.println("R$" + itemAddPedido.getPreco() + "\t\t" + itemAddPedido.getNome() +
 							 "\t\t\t" + obs);
+				}
 				
 				total += itemAddPedido.getPreco();
 				
 				System.out.println(itemAddPedido.getNome() + " adicionado com sucesso!\n\n");
 				
-				}
-				
 				}else {
+					
 				break;
 			}
 			
