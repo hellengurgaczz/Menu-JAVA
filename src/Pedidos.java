@@ -23,11 +23,12 @@ public class Pedidos {
 		FileWriter arquivo = new FileWriter("C:\\Users\\fernandes\\Documents\\Faculdade\\Faculdade SI - Matérias\\2° Período\\1°Bimestre\\Desenvolvimento de Software I\\Eclipse\\Atividade 5\\Pedidos\\pedido " + codigoPedido + ".txt");
 		PrintWriter gravador = new PrintWriter(arquivo);
 		
-		System.out.println(" -> Pedido " + codigoPedido);
-		gravador.println("PEDIDO " + codigoPedido + "\n");
+		gravador.println("PEDIDO " + codigoPedido);
+		gravador.println("------------------------------------------------------------------");
 		gravador.println("Preço\t\tPedido\t\t\t\tObservação");
+		gravador.println("------------------------------------------------------------------");
 		
-		pedindo(gravador,0);
+		pedindo(gravador,0, codigoPedido);
 
 		codigoPedido++;
 	}
@@ -43,7 +44,6 @@ public class Pedidos {
 		leitor = new Scanner(arquivo);
 		double total = 0;
 		
-		System.out.println("-> Pedido " + pedidoNumero);
 		while(leitor.hasNext()) {
 			listaPedidos.add(leitor.nextLine());
 		}
@@ -57,27 +57,28 @@ public class Pedidos {
 			if(linha.contains("TOTAL")) {
 				String [] partes = linha.split("\t");
 				total = Double.parseDouble(partes[1]);	
-				System.out.println(total +"linha: " +  linha);
-			}else if(i == (listaPedidos.size() - 2)) {
+			}else if(i == (listaPedidos.size() - 2)  ||  i == (listaPedidos.size() - 3)) {
 				
 			}else {
 				gravador.println(linha);
 			}
+			
 			i++;
 		}
 
-		pedindo(gravador,total);
+		pedindo(gravador,total,pedidoNumero);
 		
 		arquivo2.close();
 	}
 	
-	public static void pedindo(PrintWriter gravador, double total) throws FileNotFoundException {
+	public static void pedindo(PrintWriter gravador, double total, int pedidoNumero) throws FileNotFoundException {
 		
 		Scanner leitor = new Scanner(System.in);
 		int codigo;
 	
 		do {
 			
+			System.out.println("-> Pedido " + pedidoNumero);
 			System.out.println("\n1 - Adicionar itens\n0 - Finalizar");
 			codigo = leitor.nextInt();
 			
@@ -88,7 +89,7 @@ public class Pedidos {
 				Item itemAddPedido = Cardapio.buscarPorId(leitor.nextInt());
 				
 				leitor.nextLine();
-				System.out.println("\nAdicionar observação: (caso não, digite 'N')");
+				System.out.println("\nAdicionar observação(caso não, digite 'N'): ");
 				String obs = leitor.nextLine();
 				
 				if(obs.equals("N") || obs.equals("n")) {
@@ -100,7 +101,7 @@ public class Pedidos {
 				
 				total += itemAddPedido.getPreco();
 				
-				System.out.println(itemAddPedido.getNome() + " adicionado com sucesso!\n\n");
+				System.out.println("\n" + itemAddPedido.getNome() + " adicionado com sucesso!\n\n");
 				
 				}else {
 					
@@ -109,8 +110,8 @@ public class Pedidos {
 			
 		} while(codigo != 0);
 		
-
-		gravador.println("\nTOTAL: R$\t" + total);
+		gravador.println("\n------------------------------------------------------------------");
+		gravador.println("TOTAL: R$\t" + total);
 		gravador.close();
 
 	}
