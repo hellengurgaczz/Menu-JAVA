@@ -1,6 +1,10 @@
+package programa;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import cardapio.Cardapio;
+import pedidos.Pedidos;
 
 public class programa {
 	

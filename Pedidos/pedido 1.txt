@@ -2,10 +2,7 @@ PEDIDO 1
 ------------------------------------------------------------------
 Preço		Pedido				Observação
 ------------------------------------------------------------------
-R$13.5		Bife de alcatra			sem molho
-R$14.5		Caipirinha
-R$3.7		Agua mineral			com gelo
-R$33.0		Tannat Uruguaio
+R$3.7		Agua mineral
 
 ------------------------------------------------------------------
-TOTAL: R$	64.7
+TOTAL: R$	3.7

@@ -9,4 +9,3 @@ PRECO	VINHO
 38.1	Chardonnay Americano
 57.0	Gewurztraminer
 46.9	Sauvignon Blanc
-35.25	Moscato
