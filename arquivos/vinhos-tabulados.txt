@@ -2,7 +2,6 @@ PRECO	VINHO
 25.5	Cabernet Sauvignon
 27.45	Cabernet Franc
 33.0	Tannat Uruguaio
-45.5	Merlot Franc?s
 35.0	Malbec Argentino
 47.77	Pinot Noir
 54.0	Riesling It?lico
